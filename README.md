@@ -1,188 +1,273 @@
-DDoS Attack Detection and Mitigation in SD-IoT Networks using Machine Learning
+# DDoS Attack Detection and Mitigation in SD-IoT Networks using Machine Learning
 
-Overview
+## Overview
 
-This project implements a Machine Learning-based Intrusion Prevention System (IPS) designed to detect and mitigate Distributed Denial-of-Service (DDoS) attacks in Software Defined Internet of Things (SD-IoT) environments.
-Key Idea 
-•	SDN separates control and data planes, allowing centralized monitoring.
-•	The Ryu Controller collects traffic statistics from switches.
-•	A Machine Learning model analyzes traffic patterns.
-•	If malicious behavior is detected, the controller blocks the attacker automatically.
-________________________________________
+This project implements a **Machine Learning-based Intrusion Prevention System (IPS)** designed to detect and mitigate **Distributed Denial-of-Service (DDoS)** attacks in **Software Defined Internet of Things (SD-IoT)** environments.
 
-Objectives
+### Key Idea
 
-•	Real-time detection of DDoS attacks using Machine Learning
-•	Continuous monitoring of network flows via OpenFlow
-•	Accurate classification of traffic (Normal vs Attack)
-•	Automated mitigation using SDN controller logic
-•	Maintain network availability and performance
-________________________________________
+- SDN separates the **Control Plane** and **Data Plane**, allowing centralized monitoring.
+- The **Ryu Controller** collects traffic statistics from OpenFlow switches.
+- A **Machine Learning** model analyzes network traffic patterns.
+- If malicious behavior is detected, the controller automatically blocks the attacker.
 
-Technologies Used
+---
 
-•	Python → Core programming language
-•	Mininet → Network emulation
-•	MiniEdit → GUI-based topology design
-•	Ryu Controller → SDN controller
-•	OpenFlow → Communication protocol between switches and controller
-•	Scikit-learn → ML model training
-•	Random Forest → Classification algorithm
-•	Wireshark → Packet analysis
-•	hping3 → Attack simulation tool
-•	Ubuntu Linux 20.04 LTS→ Development environment
-________________________________________
+## Objectives
 
-Project Architecture
+- Real-time detection of DDoS attacks using Machine Learning
+- Continuous monitoring of network flows via OpenFlow
+- Accurate classification of traffic (Normal vs Attack)
+- Automated mitigation using SDN controller logic
+- Maintain network availability and performance
 
-Components Explained
-•	Mininet Network
-o	Simulates IoT devices, switches, and hosts
-•	OpenFlow Switches
-o	Forward packets and send statistics to controller
-•	Ryu Controller
-o	Central brain of the network
-o	Collects flow statistics
-o	Applies mitigation rules
-•	Machine Learning Module
-o	Processes traffic features
-o	Predicts whether traffic is normal or malicious
-________________________________________
+---
 
-Workflow
+## Technologies Used
 
-Step-by-Step Process
-•	Start Mininet topology
-•	Connect switches to Ryu controller
-•	Generate normal traffic
-•	Launch attack traffic
-•	Collect flow statistics
-•	Extract features
-•	Run ML prediction
-•	Apply mitigation if attack detected
-________________________________________
+| Technology | Purpose |
+|------------|---------|
+| Python | Core programming language |
+| Mininet | Network emulation |
+| MiniEdit | GUI-based topology design |
+| Ryu Controller | SDN controller |
+| OpenFlow | Communication protocol between switches and controller |
+| Scikit-learn | Machine Learning model training |
+| Random Forest | Classification algorithm |
+| Wireshark | Packet analysis |
+| hping3 | Attack simulation tool |
+| Ubuntu Linux 20.04 LTS | Development environment |
 
-Machine Learning Model
+---
 
-Model Details
-•	Algorithm: Random Forest
-•	Type: Supervised Learning
-Input Features
-•	Packet count
-•	Byte count
-•	Flow duration
-•	Packet rate
-Output
-•	Normal Traffic
-•	DDoS Attack
-________________________________________
+## Project Architecture
 
-Results
+### Components Explained
 
-Traffic Flow
-•	Shows normal vs attack traffic behavior
-Detection Output
-•	Displays classification results
-Confusion Matrix
-•	Evaluates model performance
-Model Accuracy
-•	Measures prediction accuracy
-________________________________________
+### Mininet Network
+- Simulates IoT devices, switches, and hosts.
 
-Repository Structure 
+### OpenFlow Switches
+- Forward packets.
+- Send flow statistics to the controller.
 
-root/
+### Ryu Controller
+- Central brain of the network.
+- Collects flow statistics.
+- Applies mitigation rules.
+
+### Machine Learning Module
+- Processes traffic features.
+- Predicts whether traffic is normal or malicious.
+
+---
+
+## Workflow
+
+### Step-by-Step Process
+
+1. Start the Mininet topology.
+2. Connect switches to the Ryu Controller.
+3. Generate normal traffic.
+4. Launch attack traffic.
+5. Collect flow statistics.
+6. Extract traffic features.
+7. Run Machine Learning prediction.
+8. Apply mitigation if an attack is detected.
+
+---
+
+## Machine Learning Model
+
+### Model Details
+
+- **Algorithm:** Random Forest
+- **Type:** Supervised Learning
+
+### Input Features
+
+- Packet Count
+- Byte Count
+- Flow Duration
+- Packet Rate
+
+### Output
+
+- Normal Traffic
+- DDoS Attack
+
+---
+
+## Results
+
+### Traffic Flow
+- Shows normal vs attack traffic behavior.
+
+### Detection Output
+- Displays classification results.
+
+### Confusion Matrix
+- Evaluates model performance.
+
+### Model Accuracy
+- Measures prediction accuracy.
+
+---
+
+## Repository Structure
+
+```text
+DDoS-Detection-and-Mitigation-in-SD-IoT-Using-ML/
 │
-├── assets/│
-├── topology /
-├── ryu_controller/
+├── assets/
+├── attack_scripts/
+├── controller/
 ├── dataset/
-├── scripts/│
+├── docs/
 ├── ml/
 ├── results/
-├── README.md                  
-├── requirements.txt           
-└── LICENSE                    
-________________________________________
+├── topology/
+├── README.md
+├── requirements.txt
+└── LICENSE
+```
 
-Repository Contents
+---
 
-topology/
-Contains Mininet topology scripts used to simulate the SD-IoT network environment. 
+## Repository Contents
 
-dataset/
-Contains captured traffic data and processed datasets used for training and testing the ML model. 
+### topology/
 
-ryu_controller/
-Contains the Ryu SDN controller responsible for:
-•	Flow monitoring
-•	Feature extraction
-•	Traffic classification
-•	DDoS mitigation
-•	OpenFlow rule installation
+Contains Mininet topology scripts used to simulate the SD-IoT network environment.
 
-scripts/
+---
+
+### dataset/
+
+Contains captured traffic data and processed datasets used for training and testing the Machine Learning model.
+
+---
+
+### controller/
+
+Contains the Ryu SDN Controller responsible for:
+
+- Flow monitoring
+- Feature extraction
+- Traffic classification
+- DDoS mitigation
+- OpenFlow rule installation
+
+---
+
+### attack_scripts/
+
 Contains shell scripts for:
-•	Generating DDoS attacks using hping3
-•	Capturing network traffic
-•	Testing connectivity between hosts
 
-models/
-Contains trained Machine Learning models and related files used for traffic classification. 
+- Generating DDoS attacks using hping3
+- Capturing network traffic
+- Testing connectivity between hosts
 
-result/
-•	Controller output
-•	Evaluation results
-•	Attack detection
+---
 
-docs/
-Project documentation including architecture, workflow, dataset description, and future scope.
-________________________________________
+### ml/
 
-Installation
+Contains trained Machine Learning models and related files used for traffic classification.
 
-Clone the repository
-git clone https://github.com/Darshangn3/DDoS-Detection-and-Mitigation-in-SD-IoT-using-ML.git
+---
 
-Move into the project directory
-cd DDoS-Detection-and-Mitigation-in-SD-IoT-using-ML
+### results/
 
-Install dependencies
+Contains:
+
+- Controller output
+- Evaluation results
+- Attack detection results
+
+---
+
+### docs/
+
+Contains project documentation including:
+
+- Architecture
+- Workflow
+- Dataset description
+- Future scope
+
+---
+
+## Installation
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/Darshangn3/DDoS-Detection-and-Mitigation-in-SD-IoT-Using-ML.git
+```
+
+### Move into the Project Directory
+
+```bash
+cd DDoS-Detection-and-Mitigation-in-SD-IoT-Using-ML
+```
+
+### Install Dependencies
+
+```bash
 pip install -r requirements.txt
-________________________________________
+```
 
-Running the Project
+---
 
-Start the Ryu Controller
+## Running the Project
+
+### Start the Ryu Controller
+
+```bash
 ryu-manager controller/ryu_controller.py
+```
 
-Launch the Mininet topology
+### Launch the Mininet Topology
+
+```bash
 sudo python3 topology/topology.py
+```
 
-Generate attack traffic
-bash scripts/syn_flood.sh
-________________________________________
+### Generate Attack Traffic
 
-Learning Outcomes
+```bash
+bash attack_scripts/syn_flood.sh
+```
 
-•	Software Defined Networking (SDN) architecture
-•	Mininet network simulation
-•	OpenFlow protocol and flow rule management
-•	Ryu SDN Controller 
-•	hping3
-•	Feature extraction 
-•	Machine Learning for intrusion detection
-•	Random Forest classifier
-•	Real-time DDoS attack detection and mitigation
-•	Integration of networking and machine learning concepts
-•	Measures prediction accuracy
-________________________________________
+---
 
-Future Improvements
+## Learning Outcomes
 
-•	Support for multiple attack types
-•	Integration of Deep Learning models (LSTM, CNN)
-•	Explainable AI techniques (SHAP, LIME)
-•	Real-time monitoring dashboard
-________________________________________
+This project provides practical experience in:
 
+- Software Defined Networking (SDN) architecture
+- Mininet network simulation
+- OpenFlow protocol and flow rule management
+- Ryu SDN Controller
+- hping3 attack simulation
+- Traffic feature extraction
+- Machine Learning for intrusion detection
+- Random Forest classifier
+- Real-time DDoS attack detection and mitigation
+- Integration of networking and Machine Learning concepts
+- Network traffic analysis and performance evaluation
+
+---
+
+## Future Improvements
+
+- Support multiple DDoS attack types
+- Integrate Deep Learning models (LSTM, CNN)
+- Implement Explainable AI techniques (SHAP, LIME)
+- Develop a real-time monitoring dashboard
+
+---
+
+## License
+
+This project is licensed under the **MIT License**.
